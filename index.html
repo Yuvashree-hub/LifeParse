@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeParse – Natural Language to Structured Life Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo-badge">NLP Powered</div>
+            <h1>LifeParse</h1>
+            <h2>Natural Language &rarr; Structured Life Data</h2>
+            <p class="tagline">&ldquo;Speak Naturally. Let AI Organize It.&rdquo;</p>
+        </header>
+
+        <!-- Main Input Section -->
+        <main class="main-card">
+            <div class="input-header">
+                <label for="userInput">Enter your plans, thoughts, or daily schedule:</label>
+                <div class="examples-group">
+                    <span class="example-label">Try Examples:</span>
+                    <button type="button" class="btn-chip" onclick="fillExample('academic')">Academic</button>
+                    <button type="button" class="btn-chip" onclick="fillExample('career')">Career</button>
+                    <button type="button" class="btn-chip" onclick="fillExample('personal')">Personal</button>
+                </div>
+            </div>
+
+            <textarea id="userInput" placeholder="Tell me what's on your mind... (e.g., Tomorrow I have an NLP exam at 10 AM. I need to revise attention tonight and submit my internship application before Friday.)" rows="4"></textarea>
+
+            <div class="action-bar">
+                <button id="organizeBtn" class="btn-primary" onclick="processText()">
+                    <span>Organize Data</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <div id="errorMessage" class="error-banner hidden"></div>
+        </main>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="results-section hidden">
+            <h3 class="section-title">Your Organized Data</h3>
+            <div class="cards-grid">
+                <!-- Tasks Card -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <span class="card-icon">📋</span>
+                        <h4>Tasks</h4>
+                    </div>
+                    <ul id="tasksList" class="card-content"></ul>
+                </div>
+
+                <!-- Events Card -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <span class="card-icon">📅</span>
+                        <h4>Events</h4>
+                    </div>
+                    <ul id="eventsList" class="card-content"></ul>
+                </div>
+
+                <!-- Dates & Times Card -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <span class="card-icon">⏰</span>
+                        <h4>Dates & Times</h4>
+                    </div>
+                    <ul id="datesList" class="card-content"></ul>
+                </div>
+
+                <!-- People Card -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <span class="card-icon">👤</span>
+                        <h4>People</h4>
+                    </div>
+                    <ul id="peopleList" class="card-content"></ul>
+                </div>
+
+                <!-- Locations Card -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <span class="card-icon">📍</span>
+                        <h4>Locations</h4>
+                    </div>
+                    <ul id="locationsList" class="card-content"></ul>
+                </div>
+
+                <!-- Category Card -->
+                <div class="result-card">
+                    <div class="card-header">
+                        <span class="card-icon">🏷️</span>
+                        <h4>Categories</h4>
+                    </div>
+                    <div id="categoryTags" class="card-content tags-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>LifeParse &bull; Mini Project for Natural Language Processing</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
